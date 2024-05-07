@@ -10,7 +10,9 @@ body{
     height: 100vh;
     background-color: #29A8FF;
 }
+/* Bacgground End */
 
+/* Calc Start */
 .calculator{
     height: 812px;
     width: 375px;
@@ -23,6 +25,7 @@ body{
 
     box-shadow: 10px 10px 10px rgba(0, 68, 115, 0.72)
 }
+/* TOP CALC ABOVE */
 .top-icons{
     color: #FFFFFF;
     display: flex;
@@ -41,16 +44,35 @@ display: flex;
 flex-direction: column;
 align-items:center;
 width: 310px ;
+border-radius: 10px;
+}
+.calc-output {
+    flex: 1;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 48px;
+    color: #FFFFFF;
+}
+
+.calc-visual {
+    flex: 1;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    color: #818181;
 }
 
 .top-half-calc{
     display: flex;
     flex-direction: column;
 }
-.close-calc {
+#close-calc {
     margin-left: auto;
     padding: 15px
 }
+/* TOP CALC CSS END BOTTOM CALC BELOW */
 .calc-buttons{
     width: 310px;
     height: 450px;
@@ -77,23 +99,6 @@ width: 310px ;
 
 }
 
-.calc-output {
-    flex: 1;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 48px;
-    color: #FFFFFF;
-}
-
-.calc-visual {
-    flex: 1;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 24px;
-    color: #818181;
-}
 button{
     background-color: transparent;
     background-repeat: no-repeat;

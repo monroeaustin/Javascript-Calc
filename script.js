@@ -37,3 +37,30 @@ function operate (operator,num,newNum) {
         console.log('try-again')
     }
 }
+
+// Logic Code Below
+const calcInput = document.querySelector('.calc-input')
+const allClearBtn = document.querySelector('.all-clear')
+const calcOutput = document.querySelector('.calc-output')
+// Functions Created For Buttons Below
+
+function clearDisplay (){
+    calcInput.innerHTML = ""
+    calcOutput.innerHTML= ''
+
+}
+
+function updateDisplay (value,operator) {
+
+}
+
+
+
+
+
+
+allClearBtn.addEventListener('click', function (){
+    clearDisplay()
+})
+
+

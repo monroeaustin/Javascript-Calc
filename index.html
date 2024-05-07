@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-
+    
     <!-- Font Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,11 +20,11 @@
             <div class="top-half-calc">
                 <div class="top-icons">
                     <div class="calc-text">Calculator</div>
-                    <div class="close-calc"><img src="./imgs/X.svg" alt="exit">
-                    </div>
+                    <button type='button' id="close-calc"><img src="./imgs/X.svg" alt="exit"></img></button>
+                    
                 </div> 
             <div class="calc-disp">
-                <div class="calc-visual"> <p> 6000/2+3227*2</p>
+                <div class="calc-visual"><p class="calc-input"> 6000/2+3227*2</p>
 
                 </div>
             <div class="calc-output"> <b> = 12,454</b>
@@ -41,48 +41,49 @@
                         <button type='button' id="sin"><img src="./imgs/Frame 27.svg" alt="sin"></img></button>
                 </div>
                 <div class="second-row">
-                    <button type='button' id="all-clear"><img src="./imgs/Frame 22.svg" alt="All Clear"></img></button>
+                    <button type='button' class="all-clear"><img src="./imgs/Frame 22.svg" alt="All Clear"></img></button>
                     <button type='button' id="backspace"><img src="./imgs/Group 1.svg" alt="Backspace"></img></button>
                     <button type='button' id="divide"><img src="./imgs/Group 2.svg" alt="divide"></img></button>
                 </div>
 
                 <div class="third-row">
-                    <button type='button' id="num-seven"><img src="./imgs/Frame 9.svg" alt="7"></img></button>
-                        <button type='button' id="num-eight"><img src="./imgs/Frame 11.svg" alt="8"></img></button>
-                            <button type='button' id="num-nine"><img src="./imgs/Frame 13.svg" alt="9"></img></button>
+                    <button type='button'value='7' id="num-seven"><img src="./imgs/Frame 9.svg" alt="7"></img></button>
+                        <button type='button' value="8" id="num-eight"><img src="./imgs/Frame 11.svg" alt="8"></img></button>
+                            <button type='button' value="9" id="num-nine"><img src="./imgs/Frame 13.svg" alt="9"></img></button>
                     
                 </div>
 
                 <div class="forth-row">
-                    <button type='button' id="sin">><img src="./imgs/Frame 5.svg" alt="4"></img></button>
-                        <button type='button' id="sin"><img src="./imgs/Frame 6.svg" alt="5"></img></button>
-                            <button type='button' id="sin"><img src="./imgs/Frame 7.svg" alt="7"></img></button>
+                    <button type='button'value="4" id="sin">><img src="./imgs/Frame 5.svg" alt="4"></img></button>
+                        <button type='button'value="5" id="sin"><img src="./imgs/Frame 6.svg" alt="5"></img></button>
+                            <button type='button' value="6" id="sin"><img src="./imgs/Frame 7.svg" alt="6"></img></button>
                     
                 </div>
 
                 <div class="fifth-row">
-                    <button type='button' id="num-four"><img src="./imgs/Frame 1.svg" alt="4"></img></button>
-                        <button type='button' id="num-five"><img src="./imgs/Frame 2.svg" alt="5"></img></button>
-                            <button type='button' id="num-six"><img src="./imgs/Frame 3.svg" alt="6"></img></button>
+                    <button type='button' value="1" id="num-one"><img src="./imgs/Frame 1.svg" alt="1"></img></button>
+                        <button type='button' value="2 "id="num-two"><img src="./imgs/Frame 2.svg" alt="2"></img></button>
+                            <button type='button'value="3" id="num-three"><img src="./imgs/Frame 3.svg" alt="3"></img></button>
                 </div>
 
                 <div class="sixth-row">
-                    <button type='button' id="num-zero"><img src="./imgs/Frame 23.svg" alt="0"></img></button>
-                    <button type='button' id="decimal"><img src="./imgs/Group 8.svg" alt="."></img></button>
+                    <button type='button'value="0" id="num-zero"><img src="./imgs/Frame 23.svg" alt="0"></img></button>
+                    <button type='button' value="." id="decimal"><img src="./imgs/Group 8.svg" alt="."></img></button>
                     
                 </div>
 
             </div> <div class="right-bttns">
-                    <div class="degree"><img src="./imgs/Frame 28.svg" alt="degree"></div>
-                    <div class="multiply"><img src="./imgs/Group 3.svg" alt="multiply"></div>
-                    <div class="subtract"><img src="./imgs/Frame 8.svg" alt="-"></div>
-                    <div class="addition"><img src="./imgs/Frame 24.svg" alt="+"></div>
-                    <div class="equal"><img src="./imgs/Frame 20.svg" alt="="></div>
+                    <button type='button' id="degree"><img src="./imgs/Frame 28.svg" alt="degree"></img></button>
+                    <button type='button' id="multiply"><img src="./imgs/Group 3.svg" alt="multiply"></img></button>
+                    <button type='button' id="subtract"><img src="./imgs/Frame 8.svg" alt="-"></img></button>
+                    <button type='button' id="add"><img src="./imgs/Frame 24.svg" alt="+"></img></button>
+                    <button type='button' id="equals"><img src="./imgs/Frame 20.svg" alt="="></img></button>
 
                 
 
     
            </div>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
