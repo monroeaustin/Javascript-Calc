@@ -94,3 +94,11 @@ width: 310px ;
     font-size: 24px;
     color: #818181;
 }
+button{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
