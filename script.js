@@ -43,14 +43,14 @@ const calcInput = document.querySelector('.calc-input')
 const allClearBtn = document.querySelector('.all-clear')
 const calcOutput = document.querySelector('.calc-output')
 const numericButtons = document.querySelectorAll('#number')
-
+const backspacebtn = document.querySelector('#backspace')
 
 // Functions Created For Buttons Below
 
 // Buttons Below Clears Input
 function clearDisplay (){
-    calcInput.innerHTML = ""
-    calcOutput.innerHTML= ''
+    calcInput.textContent = ""
+    calcOutput.textContent= ""
 
 }
 
@@ -59,6 +59,14 @@ allClearBtn.addEventListener('click', function (){
     clearDisplay()
 })
 // Clear Buton End
+// Function Below Removes Last Character
+
+function backSpce () {
+calcInput.textContent = calcInput.textContent.slice(0, -1)
+
+}
+backspacebtn.addEventListener('click', backSpce)
+
 
 //Adding Event Listeners for All Numeric Btns
 
