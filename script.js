@@ -60,17 +60,17 @@ allClearBtn.addEventListener('click', function (){
 })
 // Clear Buton End
 
-// 
+//Adding Event Listeners for All Numeric Btns
 
 numericButtons.forEach(btn => {
     btn.addEventListener('click', (event) => {
-        console.log(event.currentTarget.value);
+        updateDisplay(event);
     });
 });
 
 
-function updateDisplay () {
-calcInput.innerHTML = this.currentTarget.value
+function updateDisplay (event) {
+calcInput.textContent += event.currentTarget.value;
 }
 
 
