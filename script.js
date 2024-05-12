@@ -42,25 +42,35 @@ function operate (operator,num,newNum) {
 const calcInput = document.querySelector('.calc-input')
 const allClearBtn = document.querySelector('.all-clear')
 const calcOutput = document.querySelector('.calc-output')
+const numericButtons = document.querySelectorAll('#number')
+
+
 // Functions Created For Buttons Below
 
+// Buttons Below Clears Input
 function clearDisplay (){
     calcInput.innerHTML = ""
     calcOutput.innerHTML= ''
 
 }
 
-function updateDisplay (value,operator) {
-
-}
-
-
-
-
-
 
 allClearBtn.addEventListener('click', function (){
     clearDisplay()
 })
+// Clear Buton End
+
+// 
+
+numericButtons.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+        console.log(event.currentTarget.value);
+    });
+});
+
+
+function updateDisplay () {
+calcInput.innerHTML = this.currentTarget.value
+}
 
 
