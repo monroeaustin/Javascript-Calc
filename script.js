@@ -21,7 +21,7 @@ const divide = function (num,newNum){
 
 // Functions End Here
 
-let operator
+let operator = ['+','-','/','*']
 let num 
 let newNum
 
@@ -43,7 +43,44 @@ const calcInput = document.querySelector('.calc-input')
 const allClearBtn = document.querySelector('.all-clear')
 const calcOutput = document.querySelector('.calc-output')
 const numericButtons = document.querySelectorAll('#number')
-const backspacebtn = document.querySelector('#backspace')
+const backspaceBtn = document.querySelector('#backspace')
+const divideBtn = document.querySelector('#divide')
+const multiBtn = document.querySelector('#multiply')
+const subtractBtn = document.querySelector('#subtract')
+const addBtn = document.querySelector('#add')
+const equalBtn = document.querySelector('#equals')
+const decimalBtn = document.querySelector('#decimal')
+
+function calculate (){
+    let sum = null
+    calcInput.textContent = calcOutput.textContent
+    calcOutput.textContent = "555"
+
+}
+
+function displayOperator(element){
+    if (element.value === '/' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value) ) {
+        
+        return;
+    }
+else if (element.value === '*' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)) {
+        
+    return;
+}
+else if (element.value === '+' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)) {
+        
+    return;
+}
+else if (element.value === '=' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)) {
+        
+    return;
+}
+    else {
+        
+    calcOutput.textContent += element.value;
+   
+}
+}
 
 // Functions Created For Buttons Below
 
@@ -59,13 +96,46 @@ allClearBtn.addEventListener('click', function (){
     clearDisplay()
 })
 // Clear Buton End
-// Function Below Removes Last Character
+// Function Below Utlizies BackSpace
 
 function backSpce () {
-calcInput.textContent = calcInput.textContent.slice(0, -1)
+    calcOutput.textContent = calcInput.textContent.slice(0, -1)
 
 }
-backspacebtn.addEventListener('click', backSpce)
+backspaceBtn.addEventListener('click', backSpce)
+// BackSpace End
+// Code Below For Operating Functions
+// Divide
+
+
+
+divideBtn.addEventListener('click', function () {
+    displayOperator(divideBtn)
+})
+
+// Multiply
+multiBtn.addEventListener('click', function () {
+    displayOperator(multiBtn)
+})
+// Subtract
+subtractBtn.addEventListener('click', function(){
+    displayOperator(subtractBtn)
+})
+
+// Add
+addBtn.addEventListener('click', function (){
+
+    displayOperator(addBtn)
+} )
+
+// Equals
+equalBtn.addEventListener('click', function(){
+
+    displayOperator(equalBtn)
+
+
+    calculate ()
+})
 
 
 //Adding Event Listeners for All Numeric Btns
@@ -78,7 +148,16 @@ numericButtons.forEach(btn => {
 
 
 function updateDisplay (event) {
-calcInput.textContent += event.currentTarget.value;
+    calcOutput.textContent += event.currentTarget.value;
 }
+
+// Decimals
+decimalBtn.addEventListener('click', function() {
+    if (calcOutput.textContent.includes('.') || calcOutput.textContent === null) {
+        return
+    } else {
+        displayOperator(decimalBtn)
+    }
+});
 
 

@@ -10,6 +10,13 @@ body{
     height: 100vh;
     background-color: #29A8FF;
 }
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 /* Bacgground End */
 
 /* Calc Start */
@@ -53,6 +60,8 @@ border-radius: 10px;
     font-style: normal;
     font-size: 48px;
     color: #FFFFFF;
+    align-self: flex-end;
+    margin-right: 10px;
 }
 
 .calc-visual {
