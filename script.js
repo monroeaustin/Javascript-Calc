@@ -1,40 +1,89 @@
-// Creating Functions for Calc
+addSum = function (num1,num2){
 
-const add = function (num,newNum) {
-    // num is the pressed number// newNum is the number pressed after applying 'the operator"
-    const totalNum = num + newNum
-    return  totalNum
-    
+    let sum = num1 + num2
+    calcOutput.textContent = sum;
 }
 
-const subtract = function (num,newNum){
-    return num - newNum
+subtractAll = function(num1, num2){
+
+    let sum = num1 - num2
+    calcOutput.textContent = sum;
 }
 
-const multiply = function (num,newNum){
-    return num * newNum
+divde = function(num1, num2){
+
+    return num1 / num2; 
 }
 
-const divide = function (num,newNum){
-    return num * newNum
+multiply = function(num1, num2){
+
+    return num1 * num2;
 }
 
-// Functions End Here
+let num1 = null;
+let num2 = null;
 
-let operator = ['+','-','/','*']
-let num 
-let newNum
+let operator = null;
 
-function operate (operator,num,newNum) {
-    if (operator === 'add'){
-        add(num,newNum)
-        
-        sum = num + newNum
-        return sum
+operate = function (operator,num1,num2){
+
+    if (operator.includes('+')){
+        addSum(num1,num2);
+    }
+
+    else if (operator.includes('-')){
+        subtractAll(num1,num2);
+    }
+
+    else if (operator.includes('/')){
+        divde(num1,num2);
+    }
+    else if (operator.includes('*')){
+        multiply(num1,num2);
     }
 
     else {
-        console.log('try-again')
+        calcOutput.textContent = "ERR0R"
+    }
+
+    
+}
+
+
+function decimalValidation (){
+    if (calcOutput.textContent === ''){
+        decimalBtn.disabled = true;
+        decimalBtn.disabled = false;
+    }
+    getCurrentNumber();
+}
+function getCurrentNumber() {
+    // Get the entire expression entered so far
+    const expression = calcOutput.textContent;
+
+    // Split the expression by operators to get individual numbers
+    const numbers = expression.split(/[+\-*/]/);
+
+    // Return the last number in the array, which is the current number being entered
+    let lastTypeNum =  numbers[numbers.length - 1];
+
+    if (lastTypeNum.includes('.') ) {
+        decimalBtn.disabled = true;
+        decimalBtn.disabled = false;
+
+        
+        return;
+    } 
+    else if (lastTypeNum === ''){
+
+        calcOutput.textContent += "0";
+        calcOutput.textContent += decimalBtn.value;
+    }
+    
+    else {
+        
+        decimalBtn.disabled = false;
+        calcOutput.textContent += decimalBtn.value;
     }
 }
 
@@ -50,16 +99,16 @@ const subtractBtn = document.querySelector('#subtract')
 const addBtn = document.querySelector('#add')
 const equalBtn = document.querySelector('#equals')
 const decimalBtn = document.querySelector('#decimal')
+const CalInputText = calcOutput.textContent;
 
-function calculate (){
-    let sum = null
-    calcInput.textContent = calcOutput.textContent
-    calcOutput.textContent = "555"
+ function setDefaultCalcVisual () {
 
-}
+    calcOutput.textContent = "0";
+ }
+
 
 function displayOperator(element){
-    if (element.value === '/' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value) ) {
+    if (element.value === '/' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)){
         
         return;
     }
@@ -75,11 +124,13 @@ else if (element.value === '=' && calcOutput.textContent === '' || calcOutput.te
         
     return;
 }
-    else {
-        
+  else {
+
+
+
     calcOutput.textContent += element.value;
-   
-}
+    
+  }
 }
 
 // Functions Created For Buttons Below
@@ -99,7 +150,7 @@ allClearBtn.addEventListener('click', function (){
 // Function Below Utlizies BackSpace
 
 function backSpce () {
-    calcOutput.textContent = calcInput.textContent.slice(0, -1)
+    calcOutput.textContent = calcOutput.textContent.slice(0, -1)
 
 }
 backspaceBtn.addEventListener('click', backSpce)
@@ -110,31 +161,68 @@ backspaceBtn.addEventListener('click', backSpce)
 
 
 divideBtn.addEventListener('click', function () {
+
+    
     displayOperator(divideBtn)
 })
 
 // Multiply
 multiBtn.addEventListener('click', function () {
+   
     displayOperator(multiBtn)
 })
 // Subtract
 subtractBtn.addEventListener('click', function(){
+
+  
     displayOperator(subtractBtn)
 })
 
 // Add
 addBtn.addEventListener('click', function (){
 
+    
     displayOperator(addBtn)
 } )
 
 // Equals
 equalBtn.addEventListener('click', function(){
 
-    displayOperator(equalBtn)
+
+    calcInput.textContent= calcOutput.textContent + "=" ;
+    equationInStr = calcOutput.textContent;
+    if (equationInStr.includes("+")){
+        let splitArray = equationInStr.split('+');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+
+    
+        operate("+",num1,num2);
+    }
+    else  if (equationInStr.includes("-")){
+        let splitArray = equationInStr.split('-');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+
+    
+        operate("-",num1,num2);
+    }
+    else if (equationInStr.includes("*")){
+        let splitArray = equationInStr.split('*');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+
+    
+        operate("*",num1,num2);
+    }
 
 
-    calculate ()
 })
 
 
@@ -142,22 +230,29 @@ equalBtn.addEventListener('click', function(){
 
 numericButtons.forEach(btn => {
     btn.addEventListener('click', (event) => {
+
+    if (calcOutput.textContent === "0"){
+
+        backSpce();
+    }
         updateDisplay(event);
     });
 });
 
 
 function updateDisplay (event) {
-    calcOutput.textContent += event.currentTarget.value;
+    const outputText = calcOutput.textContent;
+    if (outputText.charAt(0) == '0' && event.currentTarget.value === '0'){
+        return
+    }
+
+    else{
+        calcOutput.textContent += event.currentTarget.value;  
+    }
+
 }
 
 // Decimals
-decimalBtn.addEventListener('click', function() {
-    if (calcOutput.textContent.includes('.') || calcOutput.textContent === null) {
-        return
-    } else {
-        displayOperator(decimalBtn)
-    }
-});
+decimalBtn.addEventListener('click', decimalValidation)
 
 
