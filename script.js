@@ -1,3 +1,11 @@
+function hasOperator(expression) {
+const operatorPattern = /[+\-*/]/;
+return operatorPattern.test(expression);
+}
+
+
+const operatorPattern = /[+\-*/]/;
+
 addSum = function (num1,num2){
 
     let sumPreRound = num1 + num2
@@ -53,6 +61,58 @@ operate = function (operator,num1,num2){
     }
 
     
+}
+
+function CalculateAnswer(){
+
+
+    calcInput.textContent= calcOutput.textContent + "=" ;
+    equationInStr = calcOutput.textContent;
+    if (equationInStr.includes("+")){
+        let splitArray = equationInStr.split('+');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+
+    
+        operate("+",num1,num2);
+    }
+    else  if (equationInStr.includes("-")){
+        let splitArray = equationInStr.split('-');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+
+    
+        operate("-",num1,num2);
+    }
+    else if (equationInStr.includes("*")){
+        let splitArray = equationInStr.split('*');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+
+    
+        operate("*",num1,num2);
+    }
+
+    else if (equationInStr.includes("/")){
+        console.log("I Detect A Divison")
+        let splitArray = equationInStr.split('/');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+        if (num1 === 0 || num2 === 0) {
+            calcOutput.textContent = "GOT EM!";
+            return;
+        } else {
+        
+        operate("/",num1,num2)}
+    }
 }
 
 
@@ -114,29 +174,19 @@ const CalInputText = calcOutput.textContent;
 
 
 function displayOperator(element){
-    if (element.value === '/' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)){
-        
-        return;
-    }
-else if (element.value === '*' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)) {
-        
+let lastChar = calcOutput.textContent.slice(-1);
+if (hasOperator(lastChar) == true || lastChar == ''){
     return;
 }
-else if (element.value === '+' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)) {
-        
-    return;
-}
-else if (element.value === '=' && calcOutput.textContent === '' || calcOutput.textContent.includes(element.value)) {
-        
-    return;
-}
-  else {
-
-
+if (hasOperator(calcOutput.textContent) == true && hasOperator(lastChar) == false){
+    CalculateAnswer()
 
     calcOutput.textContent += element.value;
-    
-  }
+}
+else {
+    calcOutput.textContent += element.value;
+}
+
 }
 
 // Functions Created For Buttons Below
@@ -167,7 +217,7 @@ backspaceBtn.addEventListener('click', backSpce)
 
 
 divideBtn.addEventListener('click', function () {
-
+    
     
     displayOperator(divideBtn)
 })
@@ -187,60 +237,11 @@ subtractBtn.addEventListener('click', function(){
 // Add
 addBtn.addEventListener('click', function (){
 
-    
     displayOperator(addBtn)
 } )
 
 // Equals
-equalBtn.addEventListener('click', function(){
-
-
-    calcInput.textContent= calcOutput.textContent + "=" ;
-    equationInStr = calcOutput.textContent;
-    if (equationInStr.includes("+")){
-        let splitArray = equationInStr.split('+');
-        let digit1 = splitArray[0].toString();
-        let digit2 = splitArray[1].toString();
-        let num1 = parseFloat(digit1);
-        let num2 = parseFloat(digit2);
-
-    
-        operate("+",num1,num2);
-    }
-    else  if (equationInStr.includes("-")){
-        let splitArray = equationInStr.split('-');
-        let digit1 = splitArray[0].toString();
-        let digit2 = splitArray[1].toString();
-        let num1 = parseFloat(digit1);
-        let num2 = parseFloat(digit2);
-
-    
-        operate("-",num1,num2);
-    }
-    else if (equationInStr.includes("*")){
-        let splitArray = equationInStr.split('*');
-        let digit1 = splitArray[0].toString();
-        let digit2 = splitArray[1].toString();
-        let num1 = parseFloat(digit1);
-        let num2 = parseFloat(digit2);
-
-    
-        operate("*",num1,num2);
-    }
-
-    else if (equationInStr.includes("/")){
-        let splitArray = equationInStr.split('/');
-        let digit1 = splitArray[0].toString();
-        let digit2 = splitArray[1].toString();
-        let num1 = parseFloat(digit1);
-        let num2 = parseFloat(digit2);
-
-    
-        operate("/",num1,num2);
-    }
-
-})
-
+equalBtn.addEventListener('click', CalculateAnswer)
 
 //Adding Event Listeners for All Numeric Btns
 
