@@ -10,14 +10,16 @@ subtractAll = function(num1, num2){
     calcOutput.textContent = sum;
 }
 
-divde = function(num1, num2){
+divide = function(num1, num2){
 
-    return num1 / num2; 
+    let sum = num1 / num2
+    calcOutput.textContent = sum;
 }
 
 multiply = function(num1, num2){
 
-    return num1 * num2;
+    let sum = num1 * num2
+    calcOutput.textContent = sum;
 }
 
 let num1 = null;
@@ -36,7 +38,7 @@ operate = function (operator,num1,num2){
     }
 
     else if (operator.includes('/')){
-        divde(num1,num2);
+        divide(num1,num2);
     }
     else if (operator.includes('*')){
         multiply(num1,num2);
@@ -222,6 +224,16 @@ equalBtn.addEventListener('click', function(){
         operate("*",num1,num2);
     }
 
+    else if (equationInStr.includes("/")){
+        let splitArray = equationInStr.split('/');
+        let digit1 = splitArray[0].toString();
+        let digit2 = splitArray[1].toString();
+        let num1 = parseFloat(digit1);
+        let num2 = parseFloat(digit2);
+
+    
+        operate("/",num1,num2);
+    }
 
 })
 
