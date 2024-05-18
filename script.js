@@ -1,24 +1,28 @@
 addSum = function (num1,num2){
 
-    let sum = num1 + num2
+    let sumPreRound = num1 + num2
+    let sum = Math.round(sumPreRound * 100) / 100
     calcOutput.textContent = sum;
 }
 
 subtractAll = function(num1, num2){
 
-    let sum = num1 - num2
+    let sumPreRound = num1 - num2
+    let sum = Math.round(sumPreRound * 100) / 100
     calcOutput.textContent = sum;
 }
 
 divide = function(num1, num2){
 
-    let sum = num1 / num2
+    let sumPreRound = num1 / num2
+    let sum = Math.round(sumPreRound * 100) / 100
     calcOutput.textContent = sum;
 }
 
 multiply = function(num1, num2){
 
-    let sum = num1 * num2
+    let sumPreRound = num1 * num2
+    let sum = Math.round(sumPreRound * 100) / 100
     calcOutput.textContent = sum;
 }
 
