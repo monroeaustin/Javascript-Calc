@@ -175,10 +175,12 @@ const CalInputText = calcOutput.textContent;
 
 function displayOperator(element){
 let lastChar = calcOutput.textContent.slice(-1);
-if (hasOperator(lastChar) == true || lastChar == ''){
+let FirstChar = calcOutput.textContent.slice(0);
+
+if (hasOperator(lastChar) == true || lastChar == '' && element.value != '-'){
     return;
 }
-if (hasOperator(calcOutput.textContent) == true && hasOperator(lastChar) == false){
+if (hasOperator(calcOutput.textContent) == true && hasOperator(lastChar) == true ){
     CalculateAnswer()
 
     calcOutput.textContent += element.value;
