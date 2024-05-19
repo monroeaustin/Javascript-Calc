@@ -52,6 +52,7 @@ flex-direction: column;
 align-items:center;
 width: 310px ;
 border-radius: 10px;
+overflow: hidden;
 }
 .calc-output {
     flex: 1;
@@ -85,21 +86,21 @@ border-radius: 10px;
 .calc-buttons{
     width: 310px;
     height: 450px;
-    /* background-color: wheat; */
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .first-row, .second-row, .third-row,.forth-row, .fifth-row, .sixth-row {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 16px;
 }
 .right-bttns {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-left: auto;
+    gap: 18px;
+    margin-left: 12px;
 }
 .left-buttons {
     display: flex;
@@ -115,4 +116,5 @@ button{
     cursor: pointer;
     overflow: hidden;
     outline: none;
+    
 }
