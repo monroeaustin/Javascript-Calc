@@ -118,3 +118,12 @@ button{
     outline: none;
     
 }
+.rdytodomath{
+    font-size: 24px;
+    background-color: #303136;
+    width: 150px;
+    height: 75px;
+    border-radius: 10px;
+    color: #FFFFFF;
+
+}

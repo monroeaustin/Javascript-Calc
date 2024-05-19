@@ -1,3 +1,4 @@
+
 function hasOperator(expression) {
 const operatorPattern = /[+\-*/]/;
 return operatorPattern.test(expression[0]) && operatorPattern.test(expression[1]);
@@ -190,6 +191,7 @@ const equalBtn = document.querySelector('#equals')
 const decimalBtn = document.querySelector('#decimal')
 const CalInputText = calcOutput.textContent;
 const negativeBtn = document.querySelector('#negative')
+let display = 1
 
  function setDefaultCalcVisual () {
 
@@ -412,6 +414,35 @@ negativeBtn.addEventListener('click', function(event){
     displayNegativeInteger(negativeBtn);
     event.stopPropagation();
 })
+// Close/Open Calc Start
+showCalcBtn = document.querySelector('.rdytodomath')
+closeBtn = document.querySelector('#close-calc ')
+entireCalc = document.querySelector('.calculator')
+calcParent = document.querySelector('.hero')
+
+
+function hideOrShowCalc (){
+if(display == 1){
+createNewBtn = document.createElement('button');
+    createNewBtn.textContent = 'Show Calculator'
+    createNewBtn.classList.add("rdytodomath");
+            calcParent.replaceChild(createNewBtn, entireCalc);
+            let display = 0
+if (display == 0){
+    createNewBtn.addEventListener('click', function (){
+        calcParent.replaceChild(entireCalc, createNewBtn);
+        let display = 1
+    })
+}
+}
+
+} 
 
 
 
+
+
+closeBtn.addEventListener('click', function (event){
+    hideOrShowCalc();
+    event.stopPropagation();
+})
