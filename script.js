@@ -202,13 +202,14 @@ const negativeBtn = document.querySelector('#negative')
     let FirstChar = calcOutput.textContent.slice(0, 1);
     customFunction = calcOutput.textContent.slice('-')
     let evrytingButFirstChar = calcOutput.textContent.slice(1);
+    let lastTwoChar = calcOutput.textContent.slice(-2);
 
-
-if (hasOperator(lastChar) == true ){
+if (hasOperator(lastTwoChar) == true ){
+    console.log('B4')
     return;
 }
-
     else if (hasOperator(lastChar) == false &&  hasAtleastOneOperator(calcOutput.textContent) == false){
+        console.log('B5')
     calcOutput.textContent += element.value; 
     return
 }
@@ -216,22 +217,24 @@ if (hasOperator(lastChar) == true ){
 // else if (hasOperator(FirstChar) == true){
 //     calcOutput.textContent += element.value; 
 // }
-else if (hasAtleastOneOperator(calcOutput.textContent) == true && hasOperator(lastChar) == false && FirstChar !== '-'){
-
+else if (hasAtleastOneOperator(calcOutput.textContent) == true && hasAtleastOneOperator(lastChar) == false && FirstChar !== '-'){
+    console.log('B6')
     CalculateAnswer()
 
     calcOutput.textContent += element.value; 
     return
 }
 else if (hasAtleastOneOperator(calcOutput.textContent) == true && customFunction.length > 2 && customFunction[0] ==! '' ){
+    console.log('B7')
     CalculateAnswer();
 }
 else if (FirstChar == "-" && hasAtleastOneOperator(lastChar) == false && hasAtleastOneOperator(evrytingButFirstChar) == false){
+    console.log('B4')
 calcOutput.textContent += element.value; 
     
 }
 else if (FirstChar == '-' && hasAtleastOneOperator(evrytingButFirstChar) == true){
-
+    console.log('B9')
     let fullEquation = calcOutput.textContent;
     let regex = /(-?\d+(\.\d+)?)|(\d+(\.\d+)?)/g;
     let IdentifyMultiNegs = fullEquation.split('-')
@@ -241,10 +244,12 @@ else if (FirstChar == '-' && hasAtleastOneOperator(evrytingButFirstChar) == true
     CalculateAnswer(num1, num2)
 }
 else if (FirstChar == "-" && hasAtleastOneOperator(lastChar) == false){
+    console.log('B8')
     calcOutput.textContent += element.value; 
 
 }
 else if (FirstChar == "-"){
+    console.log('B20')
         CalculateAnswer();
         return;
     }
@@ -277,7 +282,6 @@ function backSpce () {
 }
 backspaceBtn.addEventListener('click', function(event){
     backSpce()
-    console.log('81')
     event.stopPropagation();
 })
 
@@ -286,7 +290,7 @@ backspaceBtn.addEventListener('click', function(event){
 
 divideBtn.addEventListener('click', function (event) {
     let lastChar = calcOutput.textContent.slice(-1);
-    if (calcOutput.textContent === '' || hasOperator(lastChar) == true) {
+    if (calcOutput.textContent === '' || hasAtleastOneOperator(lastChar) == true) {
         divideBtn.disabled= true;
         divideBtn.disabled= false;
         return;
@@ -299,7 +303,7 @@ divideBtn.addEventListener('click', function (event) {
 // Multiply
 multiBtn.addEventListener('click', function (event) {
     let lastChar = calcOutput.textContent.slice(-1);
-   if (calcOutput.textContent  === '' || hasOperator(lastChar) == true) {
+   if (calcOutput.textContent  === '' || hasAtleastOneOperator(lastChar) == true) {
     multiBtn.disabled= true;
     multiBtn.disabled= false;
    }
@@ -315,7 +319,7 @@ if (calcOutput.textContent  == '') {
     subtractBtn.disabled= false;
    }
 
-   else if(hasOperator(lastTwoChar) == true){
+   else if(hasAtleastOneOperator(lastTwoChar) == true){
     subtractBtn.disabled= true;
     subtractBtn.disabled= false;}
    else{
@@ -327,7 +331,7 @@ if (calcOutput.textContent  == '') {
 addBtn.addEventListener('click', function (event){
     let lastChar = calcOutput.textContent.slice(-1);
 
-if (calcOutput.textContent == '' || hasOperator(lastChar) == true) {
+if (calcOutput.textContent == '' || hasAtleastOneOperator(lastChar) == true) {
     addBtn.disabled= true;
     addBtn.disabled= false;
    }
